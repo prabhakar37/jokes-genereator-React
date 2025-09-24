@@ -1,48 +1,56 @@
 import { useState } from "react";
 import Button from "../components/Button";
+import SelectOption from "../components/SelectOption";
 
 
 function App() {
 
+  // for filter jokes
+  const [category, setCategory] = useState("");
+  const [type, setType] = useState("");
+
+  // for display jokes
   const [jokeSetup, setJokeSetup] = useState("");
-  const [jokeDelivery, setJokeDelivery] = useState("");
+  const [jokePunchline, setJokePunchline] = useState("");
+  const [jokeSingle, setJokeSingle] = useState("");
+
 
   function fetchData() {
-    fetch("https://v2.jokeapi.dev/joke/Dark?type=twopart")
-      .then((res) => res.json())
-      .then((data) => {
+    fetch(`https://v2.jokeapi.dev/joke/${category}?type=${type}`)
+        .then(res => res.json())
+        .then((data)=>{
+          console.log(category);
+          console.log(type);
 
-        setJokeSetup(data.setup);
-        setJokeDelivery(data.delivery)
-      });
+          // console.log(data);
+          
+            setJokeSingle(data.joke);
+            setJokeSetup(data.setup); 
+            setJokePunchline(data.delivery); 
+        })
   }
-  // fetchData()
 
-  console.log(jokeSetup);
-  console.log("1");
+  // select options functionality
+    function categoryFunc(e){
+      setCategory(e.target.value);
+    }
+    function typeFunc(e){
+      setType(e.target.value);
+    }
   
   
   return (
     <div>
       <div className="joke-container">
-          <h1>Two-Part Joke Generator</h1>
+          <h1>Jokes Generator</h1>
 
-
-            {/* <label htmlFor="fruits">Choose a fruit:</label>
-                <select id="fruits" name="fruits">
-                    <option value="">-- Select --</option>
-                    <option value="apple">Apple</option>
-                    <option value="banana">Banana</option>
-                    <option value="orange">Orange</option>
-                    <option value="grape">Grape</option>
-                </select> */}
-
-
+          <SelectOption jokeCategoryFunc = {categoryFunc} jokeTypeFunc = {typeFunc}/>
 
           <div className="joke">
             <p id="setup">{jokeSetup}</p>
+            <p id="single-jokes">{jokeSingle}</p>
           </div>    
-          <div className="punchline" id="punchline">{jokeDelivery}</div>
+          <div className="punchline" id="punchline">{jokePunchline}</div>
           <Button clickFunction = {fetchData}/>
         </div>
     </div>
