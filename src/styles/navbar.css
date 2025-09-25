@@ -1,0 +1,58 @@
+.navbar{
+    background-color: #4f5152;
+    padding: 10px 0;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 3rem;
+}
+
+#logo-sml{
+    display: none;
+}
+
+.nav-link{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    
+}
+.nav-link a{
+    text-decoration: none;
+    color: azure;
+}
+.nav-link a:hover{
+    color: orange;
+}
+
+
+#login-btn{
+    background-color: rgb(243, 117, 6);
+    margin-top: 0px;
+    padding: 10px;
+}
+
+
+
+/* Small devices (phones) */
+@media (max-width: 576px){
+
+    #logo{
+        display: none;
+    }
+    #logo-sml{
+        display: block;
+    }
+    .nav{
+        margin: 0 5px;
+    }
+
+    .nav-link{
+        gap: 10px;
+    }
+}
