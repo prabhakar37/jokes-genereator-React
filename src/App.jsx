@@ -1,6 +1,10 @@
 import { useState } from "react";
 import Button from "../components/Button";
 import SelectOption from "../components/SelectOption";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import ErrorPage from "../components/ErrorPage";
+import Contact from "../components/Contacts";
 
 
 function App() {
@@ -19,8 +23,8 @@ function App() {
     fetch(`https://v2.jokeapi.dev/joke/${category}?type=${type}`)
         .then(res => res.json())
         .then((data)=>{
-          console.log(category);
-          console.log(type);
+          // console.log(category);
+          // console.log(type);
 
           // console.log(data);
           
@@ -40,21 +44,34 @@ function App() {
   
   
   return (
-    <div>
-      <div className="joke-container">
-          <h1>Jokes Generator</h1>
+    <>
+      <div className="wrapper">
+        <Navbar></Navbar>
+        <div className="mian-contect">
+          <div className="joke-container">
+            <h1>Jokes Generator</h1>
 
-          <SelectOption jokeCategoryFunc = {categoryFunc} jokeTypeFunc = {typeFunc}/>
+            <SelectOption
+              jokeCategoryFunc={categoryFunc}
+              jokeTypeFunc={typeFunc}
+            />
 
-          <div className="joke">
-            <p id="setup">{jokeSetup}</p>
-            <p id="single-jokes">{jokeSingle}</p>
-          </div>    
-          <div className="punchline" id="punchline">{jokePunchline}</div>
-          <Button clickFunction = {fetchData}/>
+            <div className="joke">
+              <p id="setup">{jokeSetup}</p>
+              <p id="single-jokes">{jokeSingle}</p>
+            </div>
+            <div className="punchline" id="punchline">
+              {jokePunchline}
+            </div>
+            <Button clickFunction={fetchData} />
+          </div>
         </div>
-    </div>
-  )
+
+        <Footer></Footer>
+      </div>
+
+    </>
+  );
 }
 
 export default App

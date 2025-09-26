@@ -1,5 +1,7 @@
-import React from 'react'
+
+import { Link } from "react-router-dom";
 import "../src/styles/navbar.css"
+import Contact from './Contacts';
 
 function Navbar() {
   return (
@@ -9,8 +11,8 @@ function Navbar() {
         <h2 id='logo-sml'>JG</h2>
 
         <nav className="nav-link">
-          <a href="#">Home</a>
-          <a href="#">Query</a>
+          <Link to="/">Home</Link>
+          <Link to="/contacts">Contact</Link>
           <button id="login-btn">Login</button>
         </nav>
       </div>

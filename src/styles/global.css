@@ -6,14 +6,24 @@
 
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     background-color: #393737;
     margin: 0;
 }
 
+.wrapper{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.mian-contect{
+    flex: 1;
+     display: flex;
+    justify-content: center; /* horizontally center */
+    align-items: center;     /* vertically center */
+    height: 100%;
+}
 
 .joke-container {
     background-color: white;
@@ -79,8 +89,7 @@ button {
     padding: 10px 20px;
     margin-top: 20px;
     font-size: 16px;
-    background-color: #1b63ac;
-
+    background-color: #2a88e7;
     color: white;
     border: none;
     border-radius: 5px;
@@ -88,5 +97,15 @@ button {
 }
 
 button:hover {
-    background-color: #084a87;
+    background-color: #1861a6;
+}
+
+
+.footer{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    background-color: #4f5152;
+    color: white;
+    padding: 15px 0;
 }
